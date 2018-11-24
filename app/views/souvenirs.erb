@@ -1,5 +1,7 @@
 <h1 class="page-title">Check out all the recent souvenirs!</h1>
-
+<div class="nav">
+  <p class="page-link"><a href="/my_souvenirs">Check out MY souvenirs</a></p>
+</div>
 <div>
   <% @souvenirs.each do |souvenir| %>
     <ul class="souvenir-container">
@@ -12,6 +14,8 @@
   <% end %>
 </div>
 
-<p class="page-link"><a href="/logout">Log Out</a></p>
+<div class="nav">
+  <p class="page-link"><a href="/logout">Log Out</a></p>
 
-<p class="page-link"><a href="/my_souvenirs">Check out MY souvenirs!</a></p>
+  <p class="page-link"><a href="/my_souvenirs">Check out MY souvenirs</a></p>
+</div>

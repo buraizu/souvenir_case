@@ -28,3 +28,15 @@ body {
   text-transform: uppercase;
   color: #4245f4;
 }
+
+.nav {
+  font-size: 2em;
+  width: 100%;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.featured-edit {
+  float: left;
+  margin: 0 10%;
+}

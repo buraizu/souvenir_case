@@ -1,54 +1,61 @@
 <h1 class="page-title">Check out this cool souvenir!</h1>
 
-<h3>Name:</h3>
-<p><%= @souvenir.name %></p>
+<div id="edit-form">
+  <div class="featured-edit">
+    <h3>Name:</h3>
+    <p><%= @souvenir.name %></p>
 
-<h3>Source:</h3>
-<p><%= @souvenir.source %></p>
+    <h3>Source:</h3>
+    <p><%= @souvenir.source %></p>
 
-<h3>Obtained:</h3>
-<p><%= @souvenir.year_obtained %></p>
+    <h3>Obtained:</h3>
+    <p><%= @souvenir.year_obtained %></p>
 
-<h3>Description:</h3>
-<p><%= @souvenir.description %></p>
+    <h3>Description:</h3>
+    <p><%= @souvenir.description %></p>
 
-<h3>Owner:</h3>
-<p><%= @owner.username %></p>
+    <h3>Owner:</h3>
+    <p><%= @owner.username %></p>
+  </div>
 
-<a class="page-link" href="/souvenirs">Back to ALL Souvenirs</a>
 
-<br></br>
 
-<a class="page-link" href="/my_souvenirs">Back to MY Souvenirs</a>
+  <% if Helpers.current_user(session).id == @souvenir.user_id %>
+    <div class="featured-edit">
+      <p>If something's not right, change any of the fields below!</p>
 
-<% if Helpers.current_user(session).id == @souvenir.user_id %>
+      <form method="post" action="">
+        <input type="hidden" id="hidden" name="_method" value="patch" />
 
-  <h2>If something's not right, change any of the fields below!</h2>
+        <h3><label for="name">Name:</label></h3>
+        <input id="name" name="name" type="text" value="<%= @souvenir.name %>" />
 
-  <form method="post" action="">
-    <input type="hidden" id="hidden" name="_method" value="patch" />
+        <h3><label for="source">Source:</label></h3>
+        <input id="source" name="source" type="text" value="<%= @souvenir.source %>" />
 
-    <h3><label for="name">Name:</label></h3>
-    <input id="name" name="name" type="text" value="<%= @souvenir.name %>" />
+        <h3><label for="year_obtained">Year Obtained:</label></h3>
+        <input id="year_obtained" name="year_obtained" type="text" value="<%= @souvenir.year_obtained %>" />
 
-    <h3><label for="source">Source:</label></h3>
-    <input id="source" name="source" type="text" value="<%= @souvenir.source %>" />
+        <h3><label for="description">Description:</label></h3>
+        <input id="description" name="description" type="text" value="<%= @souvenir.description %>" />
 
-    <h3><label for="year_obtained">Year Obtained:</label></h3>
-    <input id="year_obtained" name="year_obtained" type="text" value="<%= @souvenir.year_obtained %>" />
+        <br></br>
+        <input type="submit" value="Save Souvenir" />
+      </form>
+    </div>
 
-    <h3><label for="description">Description:</label></h3>
-    <input id="description" name="description" type="text" value="<%= @souvenir.description %>" />
+    <form method="post" action="/souvenirs/<%= @souvenir.id %>">
+      <input type="hidden" id="hidden" name="_method" value="delete" />
+      <input type="submit" value="Get rid of this old junk! (DELETE)" />
+    </form>
 
-    <br></br>
-    <input type="submit" value="Save Souvenir" />
-  </form>
+  <% end %>
+</div>      <!-- Close Edit container  -->
 
-  <form method="post" action="/souvenirs/<%= @souvenir.id %>">
-    <input type="hidden" id="hidden" name="_method" value="delete" />
-    <input type="submit" value="Get rid of this old junk! (DELETE)" />
-  </form>
+<div class="nav">
+  <p class="page-link"><a href="/my_souvenirs">Check out MY souvenirs</a></p>
 
-<% end %>
+  <a class="page-link" href="/souvenirs">Back to ALL Souvenirs</a>
 
-<p><a class="page-link" href="/logout">Log Out</a></p>
+  <p><a class="page-link" href="/logout">Log Out</a></p>
+</div>
