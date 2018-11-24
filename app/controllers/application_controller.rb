@@ -30,6 +30,17 @@ class ApplicationController < Sinatra::Base
     erb :signup
   end
 
+  get '/my_souvenirs' do
+
+    if Helpers.is_logged_in?(session)
+      @user = User.find_by_id(session[:user_id])
+      @souvenirs = @user.souvenirs
+      erb :my_souvenirs
+    else
+      redirect "/login"
+    end
+  end
+
   get '/souvenirs' do
     @souvenirs = Souvenir.all
     erb :souvenirs
