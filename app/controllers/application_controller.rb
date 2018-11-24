@@ -1,3 +1,4 @@
-def hello
-  puts "hello world"
+require './config/environment'
+
+class ApplicationController < Sinatra::Base
 end
