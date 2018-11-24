@@ -32,3 +32,8 @@
   <br></br>
   <input type="submit" value="Edit Souvenir" />
 </form>
+
+<form method="post" action="/souvenirs/<%= @souvenir.id %>">
+  <input type="hidden" id="hidden" name="_method" value="delete" />
+  <input type="submit" value="Get rid of this old junk! (DELETE)" />
+</form>
