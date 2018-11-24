@@ -64,6 +64,16 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  patch '/souvenirs/:id' do
+    souvenir = Souvenir.find_by_id(params[:id])
+    souvenir.name = params[:name]
+    souvenir.source = params[:source]
+    souvenir.year_obtained = params[:year_obtained]
+    souvenir.description = params[:description]
+    souvenir.save
+    redirect "/souvenirs/#{souvenir.id}"
+  end
+
   post '/login' do
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
