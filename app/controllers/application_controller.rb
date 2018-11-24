@@ -46,6 +46,15 @@ class ApplicationController < Sinatra::Base
     erb :souvenirs
   end
 
+  get '/souvenirs/new' do
+    if Helpers.is_logged_in?(session)
+      @user = User.find_by_id(session[:user_id])
+      erb :new_souvenir
+    else
+      redirect "/login"
+    end
+  end
+
   post '/login' do
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
@@ -65,6 +74,20 @@ class ApplicationController < Sinatra::Base
       redirect '/souvenirs'
     else
       redirect '/signup'
+    end
+  end
+
+  post '/souvenirs/new' do
+    if !params.has_value?("")
+      souvenir = Souvenir.create(name: params[:name])
+      souvenir.source = params[:source]
+      souvenir.year_obtained = params[:year_obtained]
+      souvenir.description = params[:description]
+      souvenir.user_id = session[:user_id]
+      souvenir.save
+      redirect "/my_souvenirs"
+    else
+      redirect "/souvenirs/new"
     end
   end
 
