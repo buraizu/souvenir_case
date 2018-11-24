@@ -1,23 +1,22 @@
 <h1 class="page-title">The souvenirs of <%= @user.username %></h1>
 
-<p>I've been keeping track of your cool stuff.  I promise I didn't touch any of it!</p>
-
-<ul>
+<ul class="my-souvenirs">
   <% @souvenirs.each do |souvenir| %>
-    <li><strong>Name: </strong><%= souvenir.name %></li>
-    <li><strong>Source: </strong><em><%= souvenir.source %>, <%= souvenir.year_obtained %></em></li>
-    <li><strong>Description: </strong><%= souvenir.description %></li>
-    <li><a href="/souvenirs/<%= souvenir.id %>">Make changes to your souvenir</a></li>
+    <div class="my-souvenir">
+      <p><strong>Name: </strong><%= souvenir.name %></p>
+      <p><strong>Source: </strong><em><%= souvenir.source %>, <%= souvenir.year_obtained %></em></p>
+      <p><strong>Description: </strong><%= souvenir.description %></p>
+      <p><a href="/souvenirs/<%= souvenir.id %>">Make changes to your souvenir</a></p>
+    </div>
+    <p></p>
   <% end %>
 </ul>
 
 <br></br>
 
-<a class="page-link" href="/souvenirs/new">Add a new souvenir!</a>
-
-<br></br>
-
 <div class="nav">
+  <a class="page-link" href="/souvenirs/new">Add a new souvenir!</a>
+
   <p><a class="page-link" href="/souvenirs">Back to ALL Souvenirs</a></p>
 
   <p><a class="page-link" href="/logout">Log Out</a></p>

@@ -8,11 +8,21 @@ body {
   margin: 0 auto;
 }
 
+.new-form {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.edit-delete-button {
+  text-align: center;
+}
+
 .souvenir-container {
   border: 2px solid #000;
   border-radius: 10px;
   padding-bottom: 10px;
-
+  background-color: #7db7ed;
 }
 
 .page-title {
@@ -34,9 +44,24 @@ body {
   width: 100%;
   border-radius: 10px;
   text-align: center;
+  clear: both;
 }
 
 .featured-edit {
   float: left;
   margin: 0 10%;
+  width: 30%;
+}
+
+.my-souvenirs {
+
+
+}
+
+.my-souvenir {
+  font-size: 1.5em;
+  background-color: #7db7ed;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 10px;
 }

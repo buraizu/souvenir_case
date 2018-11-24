@@ -1,25 +1,26 @@
 <h1 class="page-title">Add a souvenir with this form:</h1>
 
-<form method="post" action="/souvenirs/new">
+<div class="new-form">
+  <form method="post" action="/souvenirs/new">
 
-  <h3><label for="name">Name:</label></h3>
-  <input id="name" name="name" type="text" />
+    <h3><label for="name">Name:</label></h3>
+    <input id="name" name="name" type="text" />
 
-  <h3><label for="name">Source:</label></h3>
-  <input id="source" name="source" type="text" />
+    <h3><label for="name">Source:</label></h3>
+    <input id="source" name="source" type="text" />
 
-  <h3><label for="name">Year Obtained:</label></h3>
-  <input id="year_obtained" name="year_obtained" type="text" />
+    <h3><label for="name">Year Obtained:</label></h3>
+    <input id="year_obtained" name="year_obtained" type="text" />
 
-  <h3><label for="name">Description:</label></h3>
-  <input id="description" name="description" type="text" />
+    <h3><label for="name">Description:</label></h3>
+    <textarea rows="10" columns="50" name="description" id="description"></textarea>
 
-  <br></br>
+    <br></br>
 
-  <input type="submit" value="Submit" />
+    <input type="submit" value="Submit" />
 
-</form>
-
+  </form>
+</div>
 <div class="nav">
   <p class="page-link"><a href="/my_souvenirs">Check out MY souvenirs</a></p>
 
