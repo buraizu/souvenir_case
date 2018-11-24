@@ -10,9 +10,14 @@ class ApplicationController < Sinatra::Base
   end
 
   delete '/souvenirs/:id' do
+
     souvenir = Souvenir.find_by_id(params[:id])
-    souvenir.destroy
-    redirect "/my_souvenirs"
+    if Helpers.current_user(session).id == souvenir[:user_id]
+      souvenir.destroy
+      redirect "/my_souvenirs"
+    else
+      redirect "/souvenirs"
+    end
   end
 
   get '/' do
