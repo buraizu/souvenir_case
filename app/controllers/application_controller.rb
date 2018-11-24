@@ -55,6 +55,15 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get '/souvenirs/:id' do
+    if Helpers.is_logged_in?(session)
+      @souvenir = Souvenir.find_by_id(params[:id])
+      erb :show_souvenir
+    else
+      redirect "/login"
+    end
+  end
+
   post '/login' do
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
