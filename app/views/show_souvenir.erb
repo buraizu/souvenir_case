@@ -1,39 +1,46 @@
-<h1>Examine, Edit, or Eradicate this souvenir!</h1>
+<h1>Check out this cool souvenir!</h1>
 
-<h3>Current Name:</h3>
+<h3>Name:</h3>
 <p><%= @souvenir.name %></p>
 
-<h3>Current Source:</h3>
+<h3>Source:</h3>
 <p><%= @souvenir.source %></p>
 
-<h3>Current Year Obtained:</h3>
+<h3>Obtained:</h3>
 <p><%= @souvenir.year_obtained %></p>
 
-<h3>Current Description:</h3>
+<h3>Description:</h3>
 <p><%= @souvenir.description %></p>
 
-<h2>Change any of the fields below!</h2>
+<h3>Owner:</h3>
+<p><%= @owner.username %></p>
 
-<form method="post" action="">
-  <input type="hidden" id="hidden" name="_method" value="patch" />
+<% if Helpers.current_user(session).id == @souvenir.user_id %>
 
-  <h3><label for="name">Name:</label></h3>
-  <input id="name" name="name" type="text" value="<%= @souvenir.name %>" />
+  <h2>If something's not right, change any of the fields below!</h2>
 
-  <h3><label for="source">Source:</label></h3>
-  <input id="source" name="source" type="text" value="<%= @souvenir.source %>" />
+  <form method="post" action="">
+    <input type="hidden" id="hidden" name="_method" value="patch" />
 
-  <h3><label for="year_obtained">Year Obtained:</label></h3>
-  <input id="year_obtained" name="year_obtained" type="text" value="<%= @souvenir.year_obtained %>" />
+    <h3><label for="name">Name:</label></h3>
+    <input id="name" name="name" type="text" value="<%= @souvenir.name %>" />
 
-  <h3><label for="description">Description:</label></h3>
-  <input id="description" name="description" type="text" value="<%= @souvenir.description %>" />
+    <h3><label for="source">Source:</label></h3>
+    <input id="source" name="source" type="text" value="<%= @souvenir.source %>" />
 
-  <br></br>
-  <input type="submit" value="Edit Souvenir" />
-</form>
+    <h3><label for="year_obtained">Year Obtained:</label></h3>
+    <input id="year_obtained" name="year_obtained" type="text" value="<%= @souvenir.year_obtained %>" />
 
-<form method="post" action="/souvenirs/<%= @souvenir.id %>">
-  <input type="hidden" id="hidden" name="_method" value="delete" />
-  <input type="submit" value="Get rid of this old junk! (DELETE)" />
-</form>
+    <h3><label for="description">Description:</label></h3>
+    <input id="description" name="description" type="text" value="<%= @souvenir.description %>" />
+
+    <br></br>
+    <input type="submit" value="Save Souvenir" />
+  </form>
+
+  <form method="post" action="/souvenirs/<%= @souvenir.id %>">
+    <input type="hidden" id="hidden" name="_method" value="delete" />
+    <input type="submit" value="Get rid of this old junk! (DELETE)" />
+  </form>
+
+<% end %>
