@@ -1,0 +1,2 @@
+class SouvenirsController < ApplicationController
+end
