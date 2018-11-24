@@ -1,4 +1,4 @@
-<h1>Check out this cool souvenir!</h1>
+<h1 class="page-title">Check out this cool souvenir!</h1>
 
 <h3>Name:</h3>
 <p><%= @souvenir.name %></p>
@@ -15,11 +15,11 @@
 <h3>Owner:</h3>
 <p><%= @owner.username %></p>
 
-<a href="/souvenirs">Back to ALL Souvenirs</a>
+<a class="page-link" href="/souvenirs">Back to ALL Souvenirs</a>
 
 <br></br>
 
-<a href="/my_souvenirs">Back to MY Souvenirs</a>
+<a class="page-link" href="/my_souvenirs">Back to MY Souvenirs</a>
 
 <% if Helpers.current_user(session).id == @souvenir.user_id %>
 
@@ -51,4 +51,4 @@
 
 <% end %>
 
-<p><a href="/logout">Log Out</a></p>
+<p><a class="page-link" href="/logout">Log Out</a></p>

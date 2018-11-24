@@ -1,15 +1,17 @@
-<h1>Check out all the recent souvenirs!</h1>
+<h1 class="page-title">Check out all the recent souvenirs!</h1>
 
-<ul>
+<div>
   <% @souvenirs.each do |souvenir| %>
-    <p>Souvenir ID: <%= souvenir.id %></p>
-    <li><a href="/souvenirs/<%= souvenir.id %>"><%= souvenir.name %></a></li>
-    <li><strong>Source: </strong><em><%= souvenir.source %>, <%= souvenir.year_obtained %></em></li>
-    <li><strong>Description: </strong><%= souvenir.description %></li>
+    <ul class="souvenir-container">
+      <p>Souvenir ID: <%= souvenir.id %></p>
+      <li><a href="/souvenirs/<%= souvenir.id %>"><%= souvenir.name %></a></li>
+      <li><strong>Source: </strong><em><%= souvenir.source %>, <%= souvenir.year_obtained %></em></li>
+      <li><strong>Description: </strong><%= souvenir.description %></li>
+    </ul>
     <p></p>
   <% end %>
-</ul>
+</div>
 
-<p><a href="/logout">Log Out</a></p>
+<p class="page-link"><a href="/logout">Log Out</a></p>
 
-<p><a href="/my_souvenirs">Check out MY souvenirs!</a></p>
+<p class="page-link"><a href="/my_souvenirs">Check out MY souvenirs!</a></p>

@@ -1,0 +1,30 @@
+
+body {
+  background-color: #adedc9;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.souvenir-container {
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding-bottom: 10px;
+
+}
+
+.page-title {
+  text-align: center;
+}
+
+.page-link {
+  text-decoration: none;
+  color: #1c4434;
+}
+
+.page-link:hover {
+  text-transform: uppercase;
+  color: #4245f4;
+}
