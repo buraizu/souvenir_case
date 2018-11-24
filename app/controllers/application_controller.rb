@@ -13,8 +13,21 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
+  get '/login' do
+    if Helpers.is_logged_in?(session)
+      redirect "/souvenirs"
+    else
+      erb :login
+    end
+  end
+
   get '/signup' do
-    erb: signup
+    erb :signup
+  end
+
+  get '/souvenirs' do
+    @souvenirs = Souvenir.all
+    erb :souvenirs
   end
 
   post '/signup' do

@@ -1,0 +1,9 @@
+<h1>Check out all the recent souvenirs!</h1>
+
+<ul>
+<% @souvenirs.each do |souvenir| %>
+  <li><strong>Name: </strong><%= souvenir.name %></li>
+  <li><strong>Source: </strong><em><%= souvenir.source %>, <%= souvenir.year_obtained %></em></li>
+  <li><strong>Description: </strong><%= souvenir.description %></li>
+<% end %>
+</ul>
