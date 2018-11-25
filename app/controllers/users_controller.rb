@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   get '/logout' do
     session.clear
-    redirect "/login"
+    redirect "/"
   end
 
   get '/signup' do
@@ -23,7 +23,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect "/souvenirs"
     else
-      redirect "/login"
+      flash[:message] = "Incorrect username or password!"
+      redirect "/error"
     end
   end
 
@@ -38,13 +39,14 @@ class UsersController < ApplicationController
         user.password = params[:password]
         user.save
         session[:user_id] = user.id
-        flash[:message] = "Thanks for signing up"
         redirect "/souvenirs"
       else
-        redirect "/signup"
+        flash[:message] = "That username is already taken!"
+        redirect "/error"
       end
     else
-      redirect "/signup"
+      flash[:message] = "You left one or more fields blank!"
+      redirect "/error"
     end
   end
 
