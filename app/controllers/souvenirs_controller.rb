@@ -23,9 +23,14 @@ class SouvenirsController < ApplicationController
   end
 
   get '/souvenirs' do
-    @souvenirs = Souvenir.all
-    @users = User.all
-    erb :'souvenirs/souvenirs'
+    if Helpers.is_logged_in?(session)
+      @souvenirs = Souvenir.all
+      @users = User.all
+      erb :'souvenirs/souvenirs'
+    else
+      flash[:message] = "You're not logged in!"
+      redirect "/error"
+    end
   end
 
   get '/souvenirs/new' do
