@@ -36,21 +36,21 @@
         <input id="year_obtained" name="year_obtained" type="text" value="<%= @souvenir.year_obtained %>" />
 
         <h3><label for="description">Description:</label></h3>
-        <textarea rows="10" columns="50" name="description" id="description"><%= @souvenir.description %></textarea>
+        <textarea rows="5" columns="50" name="description" id="description"><%= @souvenir.description %></textarea>
 
-        <br></br>
         <div class="edit-delete-button">
           <input type="submit" value="Save" />
         </div>
       </form>
+      <form method="post" action="/souvenirs/<%= @souvenir.id %>">
+        <input type="hidden" id="hidden" name="_method" value="delete" />
+        <div class="edit-delete-button">
+          <input class="edit-delete-button" type="submit" value="Delete" />
+        </div>
+      </form>
     </div>
 
-    <form method="post" action="/souvenirs/<%= @souvenir.id %>">
-      <input type="hidden" id="hidden" name="_method" value="delete" />
-      <div class="edit-delete-button">
-        <input class="edit-delete-button" type="submit" value="Delete" />
-      </div>
-    </form>
+
 
   <% end %>
 </div>      <!-- Close Edit container  -->

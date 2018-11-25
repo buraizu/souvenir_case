@@ -3,10 +3,6 @@ body {
   background-color: #adedc9;
 }
 
-a {
-
-}
-
 .container {
   width: 80%;
   margin: 0 auto;
@@ -19,7 +15,8 @@ a {
 }
 
 .edit-delete-button {
-  display: inline-block;
+  text-align: center;
+  padding-bottom: 10px;
 }
 
 .souvenir-container {
@@ -62,6 +59,8 @@ a {
 }
 
 .signup {
+  width: 50%;
+  margin: 0 auto;
   font-size: 2em;
   text-align: center;
   padding: 20px;
@@ -79,5 +78,5 @@ a {
 }
 
 #edit-form {
-  height: 100%;
+
 }
