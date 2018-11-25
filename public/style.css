@@ -15,7 +15,7 @@ body {
 }
 
 .edit-delete-button {
-  text-align: center;
+  display: inline-block;
 }
 
 .souvenir-container {
@@ -48,13 +48,18 @@ body {
 }
 
 .featured-edit {
-  float: left;
-  margin: 0 10%;
-  width: 30%;
+  border: 2px solid #000;
+  margin: 0 auto;
+  background-color: #7db7ed;
+  width: 80%;
+  height: 100%;
+  text-align: center;
+  border-radius: 10px;
 }
 
-.my-souvenirs {
-
+.signup {
+  font-size: 2em;
+  text-align: center;
 
 }
 
@@ -64,4 +69,8 @@ body {
   border: 2px solid #000;
   border-radius: 10px;
   padding: 10px;
+}
+
+#edit-form {
+  height: 100%;
 }

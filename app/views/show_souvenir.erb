@@ -18,9 +18,8 @@
     <p><%= @owner.username %></p>
   </div>
 
-
-
   <% if Helpers.current_user(session).id == @souvenir.user_id %>
+    <p></p>
     <div class="featured-edit">
       <p>If something's not right, change any of the fields below!</p>
 
@@ -38,7 +37,6 @@
 
         <h3><label for="description">Description:</label></h3>
         <textarea rows="10" columns="50" name="description" id="description"><%= @souvenir.description %></textarea>
-        <input id="description" name="description" type="text" value="<%= @souvenir.description %>" />
 
         <br></br>
         <div class="edit-delete-button">
