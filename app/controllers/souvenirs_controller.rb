@@ -55,18 +55,23 @@ class SouvenirsController < ApplicationController
   end
 
   patch '/souvenirs/:id' do
-    souvenir = Souvenir.find_by_id(params[:id])
-    souvenir.name = params[:name]
-    souvenir.source = params[:source]
-    if params[:year_obtained].to_i <= 0 || params[:year_obtained].to_i >= Time.now.year
-      flash[:message] = "You entered invalid dates!"
-      redirect "/error"
+    if !params.has_value?("")
+      souvenir = Souvenir.find_by_id(params[:id])
+      souvenir.name = params[:name]
+      souvenir.source = params[:source]
+      if params[:year_obtained].to_i <= 0 || params[:year_obtained].to_i >= Time.now.year
+        flash[:message] = "You entered invalid dates!"
+        redirect "/error"
+      else
+        souvenir.year_obtained = params[:year_obtained]
+      end
+      souvenir.description = params[:description]
+      souvenir.save
+      redirect "/souvenirs/#{souvenir.id}"
     else
-      souvenir.year_obtained = params[:year_obtained]
+      flash[:message] = "You didn't fill in one or more fields!"
+      redirect "/error"
     end
-    souvenir.description = params[:description]
-    souvenir.save
-    redirect "/souvenirs/#{souvenir.id}"
   end
 
   post '/souvenirs/new' do
