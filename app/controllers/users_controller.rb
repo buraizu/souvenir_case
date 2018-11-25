@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     if Helpers.is_logged_in?(session)
       redirect "/souvenirs"
     else
-      erb :login
+      erb :'users/login'
     end
   end
 
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   get '/signup' do
-    erb :signup
+    erb :'users/signup'
   end
 
   post '/login' do

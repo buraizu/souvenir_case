@@ -66,12 +66,9 @@ class SouvenirsController < ApplicationController
         redirect "/souvenirs"
       else
         souvenir.year_obtained = params[:year_obtained]
-
       end
-
       souvenir.description = params[:description]
       souvenir.user_id = session[:user_id]
-      binding.pry
       souvenir.save
       redirect "/my_souvenirs"
     else
