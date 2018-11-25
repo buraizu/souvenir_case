@@ -6,6 +6,7 @@ class SouvenirsController < ApplicationController
       souvenir.destroy
       redirect "/my_souvenirs"
     else
+      flash[:message] = "That's not your souvenir!"
       redirect "/souvenirs"
     end
   end
@@ -16,7 +17,8 @@ class SouvenirsController < ApplicationController
       @souvenirs = @user.souvenirs
       erb :'souvenirs/my_souvenirs'
     else
-      redirect "/login"
+      flash[:message] = "You're not logged in!"
+      redirect "/error"
     end
   end
 
@@ -31,7 +33,8 @@ class SouvenirsController < ApplicationController
       @user = User.find_by_id(session[:user_id])
       erb :'/souvenirs/new_souvenir'
     else
-      redirect "/login"
+      flash[:message] = "You're not logged in!"
+      redirect "/error"
     end
   end
 
@@ -41,7 +44,8 @@ class SouvenirsController < ApplicationController
       @owner = User.find_by_id(@souvenir.user_id)
       erb :'souvenirs/show_souvenir'
     else
-      redirect "/login"
+      flash[:message] = "You're not logged in!"
+      redirect "/error"
     end
   end
 
@@ -50,7 +54,8 @@ class SouvenirsController < ApplicationController
     souvenir.name = params[:name]
     souvenir.source = params[:source]
     if params[:year_obtained].to_i <= 0 || params[:year_obtained].to_i >= Time.now.year
-      redirect "/souvenirs/#{souvenir.id}"
+      flash[:message] = "You entered invalid dates!"
+      redirect "/error"
     else
       souvenir.year_obtained = params[:year_obtained]
     end
@@ -64,7 +69,8 @@ class SouvenirsController < ApplicationController
       souvenir = Souvenir.create(name: params[:name])
       souvenir.source = params[:source]
       if params[:year_obtained].to_i <= 0 || params[:year_obtained].to_i >= Time.now.year
-        redirect "/souvenirs"
+        flash[:message] = "You entered invalid dates!"
+        redirect "/error"
       else
         souvenir.year_obtained = params[:year_obtained]
       end
@@ -73,7 +79,8 @@ class SouvenirsController < ApplicationController
       souvenir.save
       redirect "/my_souvenirs"
     else
-      redirect "/souvenirs/new"
+      flash[:message] = "You didn't fill in one or more fields!"
+      redirect "/error"
     end
   end
 

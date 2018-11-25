@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   get '/login' do
     if Helpers.is_logged_in?(session)
       redirect "/souvenirs"
@@ -38,6 +38,7 @@ class UsersController < ApplicationController
         user.password = params[:password]
         user.save
         session[:user_id] = user.id
+        flash[:message] = "Thanks for signing up"
         redirect "/souvenirs"
       else
         redirect "/signup"
