@@ -112,7 +112,12 @@ class ApplicationController < Sinatra::Base
     if !params.has_value?("")
       souvenir = Souvenir.create(name: params[:name])
       souvenir.source = params[:source]
-      souvenir.year_obtained = params[:year_obtained]
+      if params[:year_obtained].to_i <= 0 || params[:year_obtained].to_i >= Time.now.year
+        redirect "/souvenirs"
+      else
+        souvenir.year_obtained = params[:year_obtained]
+      end
+      binding.pry
       souvenir.description = params[:description]
       souvenir.user_id = session[:user_id]
       souvenir.save
