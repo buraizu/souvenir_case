@@ -1,7 +1,6 @@
 class SouvenirsController < ApplicationController
 
   delete '/souvenirs/:id' do
-
     souvenir = Souvenir.find_by_id(params[:id])
     if Helpers.current_user(session).id == souvenir[:user_id]
       souvenir.destroy
@@ -12,11 +11,10 @@ class SouvenirsController < ApplicationController
   end
 
   get '/my_souvenirs' do
-
     if Helpers.is_logged_in?(session)
       @user = User.find_by_id(session[:user_id])
       @souvenirs = @user.souvenirs
-      erb :my_souvenirs
+      erb :'souvenirs/my_souvenirs'
     else
       redirect "/login"
     end
@@ -24,13 +22,13 @@ class SouvenirsController < ApplicationController
 
   get '/souvenirs' do
     @souvenirs = Souvenir.all
-    erb :souvenirs
+    erb :'souvenirs/souvenirs'
   end
 
   get '/souvenirs/new' do
     if Helpers.is_logged_in?(session)
       @user = User.find_by_id(session[:user_id])
-      erb :new_souvenir
+      erb :'/souvenirs/new_souvenir'
     else
       redirect "/login"
     end
@@ -40,12 +38,11 @@ class SouvenirsController < ApplicationController
     if Helpers.is_logged_in?(session)
       @souvenir = Souvenir.find_by_id(params[:id])
       @owner = User.find_by_id(@souvenir.user_id)
-      erb :show_souvenir
+      erb :'souvenirs/show_souvenir'
     else
       redirect "/login"
     end
   end
-
 
   patch '/souvenirs/:id' do
     souvenir = Souvenir.find_by_id(params[:id])
@@ -69,9 +66,12 @@ class SouvenirsController < ApplicationController
         redirect "/souvenirs"
       else
         souvenir.year_obtained = params[:year_obtained]
+
       end
+
       souvenir.description = params[:description]
       souvenir.user_id = session[:user_id]
+      binding.pry
       souvenir.save
       redirect "/my_souvenirs"
     else

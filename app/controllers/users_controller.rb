@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   get '/login' do
     if Helpers.is_logged_in?(session)
       redirect "/souvenirs"
