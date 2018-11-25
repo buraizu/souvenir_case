@@ -3,6 +3,10 @@ body {
   background-color: #adedc9;
 }
 
+a {
+
+}
+
 .container {
   width: 80%;
   margin: 0 auto;
@@ -60,7 +64,10 @@ body {
 .signup {
   font-size: 2em;
   text-align: center;
-
+  padding: 20px;
+  background-color: #7db7ed;
+  border: 2px solid black;
+  border-radius: 10px;
 }
 
 .my-souvenir {
