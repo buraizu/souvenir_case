@@ -77,6 +77,8 @@ body {
   padding: 10px;
 }
 
-#edit-form {
-
+.flash-message {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
 }
