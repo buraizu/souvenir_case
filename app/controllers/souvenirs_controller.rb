@@ -22,6 +22,7 @@ class SouvenirsController < ApplicationController
 
   get '/souvenirs' do
     @souvenirs = Souvenir.all
+    @users = User.all
     erb :'souvenirs/souvenirs'
   end
 

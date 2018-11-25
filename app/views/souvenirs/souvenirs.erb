@@ -9,6 +9,11 @@
       <li><a href="/souvenirs/<%= souvenir.id %>"><%= souvenir.name %></a></li>
       <li><strong>Source: </strong><em><%= souvenir.source %>, <%= souvenir.year_obtained %></em></li>
       <li><strong>Description: </strong><%= souvenir.description %></li>
+      <% @users.each do |user| %>
+        <% if user.id == souvenir[:user_id] %>
+          <li><em>Owned By: </em><a href=<%= user.username %></li>
+        <% end %>
+      <% end %>
     </ul>
     <p></p>
   <% end %>
