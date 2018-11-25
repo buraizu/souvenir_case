@@ -29,14 +29,24 @@ class UsersController < ApplicationController
 
   post '/signup' do
     if !params[:username].empty? && !params[:password].empty?
-      user = User.create(username: params[:username])
-      user.password = params[:password]
-      user.save
-      session[:user_id] = user.id
-      redirect '/souvenirs'
+      usernames = []
+      User.all.each do |user|
+        usernames << user.username
+      end
+      if !usernames.include?(params[:username])
+        user = User.create(username: params[:username])
+        user.password = params[:password]
+        user.save
+        session[:user_id] = user.id
+        redirect "/souvenirs"
+      else
+        redirect "/signup"
+      end
     else
-      redirect '/signup'
+      redirect "/signup"
     end
   end
+
+
 
 end
